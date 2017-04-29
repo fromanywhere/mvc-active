@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title></title>
+  <script data-main="App" src="require.min.js"></script>
+</head>
+<body>
+    <div id="App"></div>
+
+    <script type="text/template" id="MainPageView">
+        <h1><span data-view="LogoView"></span></h1>
+        <h2>Главная страница.</h2>
+        <div data-view="NewsListView"></div>
+        <div data-view="PostingFormView"></div>
+    </script>
+
+    <script type="text/template" id="NewsListView">
+        <ol>
+            {{~it.newsList :value:index}}
+            <li>
+                <a href='{{!it.getNewsPageLink(value.id)}}'>{{!value.title}}</a>
+            </li>
+            {{~}}
+        </ol>
+    </script>
+
+    <script type="text/template" id="PostingFormView">
+        <form method="POST">
+            <h3>Создайте новость:</h3>
+            <label>
+                Заголовок новости:
+                <input type="text" name="new" />
+            </label>
+            <input type="submit" value="Создать" />
+        </form>
+    </script>
+
+    <script type="text/template" id="NewsPageView">
+        <h1><span data-view="LogoView"></span></h1>
+        <h2>Страница новости</h2>
+        <h3>{{=it.title}}</h3>
+    </script>
+
+    <script type="text/template" id="ErrorPageView">
+        <h1><span data-view="LogoView"></span></h1>
+        <h2>Страница ошибки</h2>
+        <p>{{!it.error}}</p>
+        <p>{{!it.trace}}</p>
+    </script>
+
+    <script type="text/template" id="LogoView">
+        <a {{? !it.isMainState}}href="{{!it.logoLink}}"{{?}}>[Логотип]</a>
+    </script>
+</body>
+</html>
