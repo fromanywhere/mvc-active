@@ -7,7 +7,7 @@ define([
     /** AbstractPageController */ AbstractPageController,
     /** State */ State,
     /** NewsPageView */ NewsPageView,
-    /** DomainModel */ DomainModel,
+    /** DomainModel */ DomainModel
 ) {
     class NewsPage extends AbstractPageController {
 
